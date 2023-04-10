@@ -1,5 +1,6 @@
 import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
 import { TagEntity } from '@app/tag/tag.entity';
+import { UserEntity } from './user/user.entity';
 
 const config: PostgresConnectionOptions = {
   type: 'postgres',
@@ -8,8 +9,9 @@ const config: PostgresConnectionOptions = {
   username: 'mediumclone',
   password: '123',
   database: 'mediumclone',
-  entities: [TagEntity],
-  synchronize: true,
+  entities: [TagEntity, UserEntity],
+  synchronize: false,
+  migrations: [__dirname + '/migrations/**/*{.ts,.js}'],
 };
 
 export default config;
